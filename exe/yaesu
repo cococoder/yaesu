@@ -12,7 +12,7 @@ module Yaesu
             data = Ost[on].items.first(10)
             if data.count > 0
                 puts ""
-                puts "last 10 messages on #{on}\n"
+                puts "last 10 of #{Ost[on].items.count} messages on #{on}\n"
                 puts ""
                 Ost[on].items.first(10).each do |data|
                     o = OpenStruct.new(MessagePack.unpack(data))
