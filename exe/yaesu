@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'thor'
+require 'yaesu'
+require 'msgpack'
+
+
+module Yaesu
+    class Cli < Thor
+        desc "transmissions", "Last 10 transmissions"
+        def transmissions(on)
+            puts ""
+            Ost[on].items.last(10).each do |data|
+                o = OpenStruct.new(MessagePack.unpack(data))
+                puts "> #{o.payload}"
+            end
+            puts ""
+        end
+    end
+end
+
+Yaesu::Cli.start(ARGV)

@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'msgpack'
   spec.add_dependency 'uuid'
   spec.add_dependency 'sdbm'
+  spec.add_dependency 'thor'
   
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html

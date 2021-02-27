@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    yaesu (0.0.1.alpha)
+    yaesu (0.0.3.alpha)
       msgpack
       ohm
       ost
       sdbm
+      thor
       uuid
 
 GEM
@@ -32,6 +33,7 @@ GEM
     stal (0.3.0)
       redic (~> 1.5)
     systemu (2.6.5)
+    thor (1.1.0)
     uuid (2.3.9)
       macaddr (~> 1.0)
 

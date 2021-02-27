@@ -4,9 +4,11 @@ require 'bundler/inline'
 require 'ost'
 require 'sdbm'
 require 'uuid'
+require 'thor'
 require 'ostruct'
 require 'msgpack'
 require 'fileutils'
+
 
 require_relative "yaesu/version"
 
