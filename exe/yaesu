@@ -14,7 +14,7 @@ module Yaesu
                 puts ""
                 puts "last 10 of #{Ost[on].items.count} messages on #{on}\n"
                 puts ""
-                Ost[on].items.first(10).each do |data|
+                Ost[on].items.first(10).reverse.each do |data|
                     o = OpenStruct.new(MessagePack.unpack(data))
                     puts ">> #{o.payload}"
                 end
