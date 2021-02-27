@@ -11,5 +11,9 @@ require "yaesu"
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start(__FILE__)
+#require "irb"
+#IRB.start(__FILE__)
+Yaesu.listen on: "so.fa.dog" do |msg|
+    puts msg
+end
+    

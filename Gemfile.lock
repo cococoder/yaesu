@@ -1,0 +1,46 @@
+PATH
+  remote: .
+  specs:
+    yaesu (0.0.1.alpha)
+      msgpack
+      ohm
+      ost
+      sdbm
+      uuid
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    hiredis (0.6.3)
+    macaddr (1.7.2)
+      systemu (~> 2.6.5)
+    msgpack (1.4.2)
+    nest (3.2.0)
+      redic
+    nido (1.0.0)
+    ohm (3.1.1)
+      nest (~> 3)
+      redic (~> 1.5.0)
+      stal
+    ost (1.0.0)
+      nido
+      redic
+    rake (13.0.3)
+    redic (1.5.3)
+      hiredis
+    sdbm (1.0.0)
+    stal (0.3.0)
+      redic (~> 1.5)
+    systemu (2.6.5)
+    uuid (2.3.9)
+      macaddr (~> 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rake (~> 13.0)
+  yaesu!
+
+BUNDLED WITH
+   2.2.3

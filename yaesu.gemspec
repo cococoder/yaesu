@@ -21,8 +21,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
-
+  spec.add_dependency 'ohm'
+  spec.add_dependency 'ost'
+  spec.add_dependency 'msgpack'
+  spec.add_dependency 'uuid'
+  spec.add_dependency 'sdbm'
+  
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
 end
