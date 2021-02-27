@@ -25,9 +25,9 @@ module Yaesu
         def transmit(on,data)
             Yaesu.transmit on: on, data: data
         end
-        desc "reset ON", "reset ON"
-        def reset(on)
-            Ost[on].redis.call("DEL",Ost[on].key)
+        desc "reset CHANNEL", "reset CHANNEL"
+        def reset(channel)
+            Ost[channel].redis.call("DEL",Ost[channel].key)
         end
     end
 end
