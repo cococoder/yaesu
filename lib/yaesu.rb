@@ -19,24 +19,25 @@ module Yaesu
 		
 		puts "listening on #{on}...."
 
-		loop do
-			Ost[on].items.each do |data|		
-				SDBM.open "./.data/#{name}" do |db|
-					o = MessagePack.unpack(data)
-					message =OpenStruct.new(o)
-					next if db.has_key? message.uid
-					begin
-						yield message if block_given?
-						db[message.uid] = message.payload
-					rescue Interrupt => e
-						puts "listening on #{on}....finished!"
-					rescue => exception
-						p exception
+		begin
+			loop do
+				Ost[on].items.each do |data|		
+					SDBM.open "./.data/#{name}" do |db|
+						o = MessagePack.unpack(data)
+						message =OpenStruct.new(o)
+						next if db.has_key? message.uid
+						begin
+							yield message if block_given?
+							db[message.uid] = message.payload
+						rescue => exception
+							p exception
+						end		
 					end
-					
 				end
+				sleep 0.200
 			end
-			sleep 0.200
+		rescue Interrupt => e
+			puts "listening on #{on}....finished!"
 		end
 	end
 end
