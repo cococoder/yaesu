@@ -12,7 +12,9 @@ require_relative "yaesu/version"
 
 module Yaesu
 	class Error < StandardError; end
-
+	def self.transmit on:, data:
+		Ost[on] << {uid: UUID.new.generate, payload: data}.to_msgpack
+	end
 	def self.listen name:, on:
 		
 		FileUtils.mkdir_p(".data/#{name}") unless Dir.exists? ".data"
