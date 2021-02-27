@@ -13,7 +13,7 @@ require_relative "yaesu/version"
 module Yaesu
 	class Error < StandardError; end
 
-	def self.listen on:
+	def self.listen name:, on:
 		
 		FileUtils.mkdir_p(".data/#{name}") unless Dir.exists? ".data"
 		
