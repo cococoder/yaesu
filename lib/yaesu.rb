@@ -14,8 +14,8 @@ require_relative "yaesu/version"
 
 module Yaesu
 	class Error < StandardError; end
-	def self.transmit on:, data:
-		Ost[on] << {uid: UUID.new.generate, payload: data}.to_msgpack
+	def self.transmit on:, event:, data:
+		Ost[on] << {uid: UUID.new.generate,event:event, data: data}.to_msgpack
 	end
 	def self.listen name:, on:
 		

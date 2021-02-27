@@ -22,7 +22,7 @@ module Yaesu
             end
         end
         desc "transmit ON DATA", "Transmit ON DATA"
-        def transmit(on,data)
+        def transmit(on,event,data)
             Yaesu.transmit on: on, data: data
         end
         desc "reset CHANNEL", "reset CHANNEL"
