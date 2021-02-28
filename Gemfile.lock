@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    yaesu (0.0.3.alpha)
+    yaesu (1.0.1.beta)
       msgpack
       ohm
       ost
       sdbm
+      terminal-table
       thor
       uuid
 
@@ -33,7 +34,10 @@ GEM
     stal (0.3.0)
       redic (~> 1.5)
     systemu (2.6.5)
+    terminal-table (3.0.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.1.0)
+    unicode-display_width (1.7.0)
     uuid (2.3.9)
       macaddr (~> 1.0)
 

@@ -3,21 +3,26 @@ require 'rubygems'
 require 'thor'
 require 'yaesu'
 require 'msgpack'
+require 'terminal-table'
 
 
 module Yaesu
     class Cli < Thor
         desc "log", "Last 10 transmissions"
         def log(on)
-            data = Ost[on].items.first(10)
-            if data.count > 0
+            items = Ost[on].items.first(10)
+            if items.count > 0
                 puts ""
-                puts "last 10 of #{Ost[on].items.count} messages on #{on}\n"
+                puts "#{Ost[on].size} transmissions on #{on}\n"
                 puts ""
-                Ost[on].items.first(10).reverse.each do |data|
-                    o = OpenStruct.new(MessagePack.unpack(data))
-                    puts ">> #{o.payload}"
+                rows = []
+                columns = ['UID','Event','Data']
+                items.reverse.each do |item|
+                    datum = OpenStruct.new(MessagePack.unpack(item))
+                    rows << [datum.uid.split("-").first,datum.event,datum.data]
                 end
+                table = Terminal::Table.new :headings => columns, :rows => rows
+                puts table
                 puts ""
             end
         end
