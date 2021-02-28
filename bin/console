@@ -13,7 +13,13 @@ require "yaesu"
 
 #require "irb"
 #IRB.start(__FILE__)
-Yaesu.listen on: "so.fa.dog" do |msg|
+
+Yaesu.configure do |config|
+    config.name = "poop"
+    config.channel  ="delane.burke.me.com"
+end
+
+Yaesu.listen! do |msg|
     puts msg
 end
     
