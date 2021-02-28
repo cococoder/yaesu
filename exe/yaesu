@@ -26,6 +26,21 @@ module Yaesu
                 puts ""
             end
         end
+
+        desc "channels", "summary of channels"
+        def channels
+            puts ""
+            rows = []
+            columns = ['Name','Total']
+            Ost.redis.call("KEYS","*ost*").each do |key|
+                rows << [key.gsub("ost:",""),Ost[key.gsub("ost:","")].size]
+            end 
+            
+            table = Terminal::Table.new :headings => columns, :rows => rows
+            puts table
+            puts ""
+        end
+
         desc "transmit ON EVENT DATA", "Transmit ON EVENT DATA"
         def transmit(on,event,data)
             Yaesu.transmit on: on, event: event, data: data
