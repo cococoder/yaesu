@@ -21,9 +21,9 @@ module Yaesu
                 puts ""
             end
         end
-        desc "transmit ON DATA", "Transmit ON DATA"
+        desc "transmit ON EVENT DATA", "Transmit ON EVENT DATA"
         def transmit(on,event,data)
-            Yaesu.transmit on: on, data: data
+            Yaesu.transmit on: on, event: event, data: data
         end
         desc "reset CHANNEL", "reset CHANNEL"
         def reset(channel)
