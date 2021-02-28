@@ -34,7 +34,9 @@ module Yaesu
 	end
 	
 	def self.listen!
-		self.listen name:Yaesu.configuration.name, on: Yaesu.configuration.channel
+		self.listen name:Yaesu.configuration.name, on: Yaesu.configuration.channel do |msg|
+			yield msg if block_given?
+		end
 	end
 
 	def self.listen name:, on:
@@ -51,7 +53,7 @@ module Yaesu
 						message =OpenStruct.new(o)
 						next if db.has_key? message.uid
 						begin
-							yield message if block_given?
+							yield message if block_given? 
 							db[message.uid] = message.payload
 						rescue => exception
 							p exception

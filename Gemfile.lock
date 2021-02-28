@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yaesu (1.0.3.beta)
+    yaesu (1.1.1.beta)
       msgpack
       ohm
       ost

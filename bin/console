@@ -16,7 +16,7 @@ require "yaesu"
 
 Yaesu.configure do |config|
     config.name = "poop"
-    config.channel  ="delane.burke.me.com"
+		config.channel  ="so.fa.dog"
 end
 
 Yaesu.listen! do |msg|
