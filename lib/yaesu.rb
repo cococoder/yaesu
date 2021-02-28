@@ -29,7 +29,7 @@ module Yaesu
 	end
 
 	class Error < StandardError; end
-	def self.transmit on:, event:, data:
+	def self.transmit on: Yaesu.configuration.channel, event:, data:
 		Ost[on] << {uid: UUID.new.generate,event:event, data: data}.to_msgpack
 	end
 	
