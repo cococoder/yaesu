@@ -13,14 +13,20 @@ require 'fileutils'
 require_relative "yaesu/version"
 
 module Yaesu
+	  REDIS_HOST = ENV.fetch("REDIS_HOST","127.0.0.1")
+	  REDIS_PORT = ENV.fetch("REDIS_PORT","6379")
+		REDIS_URL = ENV.fetch("REDIS_URL","redis://#{REDIS_HOST}:#{REDIS_PORT}")
+		REDIS_TIMEOUT = ENV.fetch("REDIS_TIMEOUT")
+	
+		Ost.redis  = Redic.new(REDIS_URL, REDIS_TIMEOUT)
 
 	def self.configuration
 		@configuration ||= OpenStruct.new(
-		  {
-			channel: "yaesu.local",
-			name: "base",
-			data_dir: "./.data"
-		  }
+			{
+				channel: "yaesu.local",
+				name: "base",
+				data_dir: "./.data",
+			}
 		)
 	end
 
@@ -32,7 +38,7 @@ module Yaesu
 	def self.transmit on: Yaesu.configuration.channel, event:, data:
 		Ost[on] << {uid: UUID.new.generate,event:event, data: data}.to_msgpack
 	end
-	
+
 	def self.listen!
 		self.listen name:Yaesu.configuration.name, on: Yaesu.configuration.channel do |msg|
 			yield msg if block_given?
@@ -40,9 +46,9 @@ module Yaesu
 	end
 
 	def self.listen name:, on:
-		
+
 		FileUtils.mkdir_p("#{Yaesu.configuration.data_dir}/#{name}") unless Dir.exists? ".data"
-		
+
 		puts "#{name} is listening on #{on} -> Ok!"
 
 		begin
