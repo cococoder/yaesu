@@ -16,7 +16,7 @@ module Yaesu
 	  REDIS_HOST = ENV.fetch("REDIS_HOST","127.0.0.1")
 	  REDIS_PORT = ENV.fetch("REDIS_PORT","6379")
 		REDIS_URL = ENV.fetch("REDIS_URL","redis://#{REDIS_HOST}:#{REDIS_PORT}")
-		REDIS_TIMEOUT = ENV.fetch("REDIS_TIMEOUT")
+		REDIS_TIMEOUT = ENV.fetch("REDIS_TIMEOUT",10_000_000)
 	
 		Ost.redis  = Redic.new(REDIS_URL, REDIS_TIMEOUT)
 
